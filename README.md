@@ -34,11 +34,11 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/claudioscheer/ler-faturna-nubank"
+	"github.com/claudioscheer/ler-fatura-nubank"
 )
 
 func main() {
-	fatura, err := fatura_nubank.ReadFatura("example/demo-1.pdf")
+	fatura, err := fatura_nubank.ReadFatura("your-pdf.pdf")
 	if err != nil {
 		log.Fatal(err)
 	}

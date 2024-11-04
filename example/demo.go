@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/claudioscheer/ler-faturna-nubank"
+	"github.com/claudioscheer/ler-fatura-nubank"
 )
 
 func main() {
