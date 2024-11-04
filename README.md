@@ -30,27 +30,21 @@ Here's how to use the ReadFatura function to read a Nubank PDF statement:
 package main
 
 import (
-    "fmt"
-    "log"
-    "github.com/claudioscheer/ler-fatura-nubank"
+	"encoding/json"
+	"fmt"
+	"log"
+
+	"github.com/claudioscheer/ler-faturna-nubank"
 )
 
 func main() {
-    pdfFilePath := "path/to/your/nubank_statement.pdf"
+	fatura, err := fatura_nubank.ReadFatura("example/demo-1.pdf")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    fatura, err := fatura_nubank.ReadFatura(pdfFilePath)
-    if err != nil {
-    	log.Fatalf("Error reading fatura: %v", err)
-    }
-
-    fmt.Printf("Due Date: %s\n", fatura.DueDate.Format("2006-01-02"))
-    fmt.Printf("Total Amount: %.2f\n", fatura.Total)
-    fmt.Printf("Previous Month Total: %.2f\n", fatura.PreviousMonthTotal)
-
-    for _, transaction := range fatura.Transactions {
-    	fmt.Printf("Date: %s, Description: %s, Value: %.2f\n",
-    		transaction.Date.Format("2006-01-02"), transaction.Description, transaction.Value)
-    }
+	value, _ := json.MarshalIndent(fatura, "", "  ")
+	fmt.Printf("Fatura: %v\n", string(value))
 }
 ```
 

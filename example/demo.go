@@ -14,6 +14,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-  value, _ := json.MarshalIndent(fatura, "", "  ")
+	value, _ := json.MarshalIndent(fatura, "", "  ")
 	fmt.Printf("Fatura: %v\n", string(value))
 }
