@@ -32,7 +32,7 @@ package main
 import (
     "fmt"
     "log"
-    "fatura_nubank"
+    "github.com/claudioscheer/ler-fatura-nubank"
 )
 
 func main() {
