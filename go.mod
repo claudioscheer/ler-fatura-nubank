@@ -1,4 +1,4 @@
-module github.com/claudioscheer/ler-faturna-nubank
+module github.com/claudioscheer/ler-fatura-nubank
 
 go 1.23.0
 

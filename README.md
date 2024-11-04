@@ -1,4 +1,4 @@
-# Fatura Nubank Package
+# Fatura Nubank
 
 ## Overview
 
