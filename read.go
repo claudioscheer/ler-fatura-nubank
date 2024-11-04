@@ -8,17 +8,17 @@ import (
 )
 
 type Transaction struct {
-	Date        time.Time
-	DateString  string
-	Description string
-	Value       float64
+	Date        time.Time `json:"date"`
+	DateString  string    `json:"date_string"`
+	Description string    `json:"description"`
+	Value       float64   `json:"value"`
 }
 
 type Fatura struct {
-	Transactions       []Transaction
-	DueDate            time.Time
-	PreviousMonthTotal float64
-	Total              float64
+	Transactions       []Transaction `json:"transactions"`
+	DueDate            time.Time     `json:"due_date"`
+	PreviousMonthTotal float64       `json:"previous_month_total"`
+	Total              float64       `json:"total"`
 }
 
 func ReadFatura(pdfFilePath string) (Fatura, error) {
@@ -69,11 +69,11 @@ func ReadFatura(pdfFilePath string) (Fatura, error) {
 			}
 
 			if strings.Contains(strings.TrimSpace(row), PrefixTransactions) {
-				transactions, err := extractTransactions(rows[i+1:])
+				transactions, err := extractTransactions(rows[i+1:], fatura.DueDate)
 				if err != nil {
 					return fatura, err
 				}
-				fatura.Transactions = transactions
+				fatura.Transactions = append(fatura.Transactions, transactions...)
 
 				break
 			}

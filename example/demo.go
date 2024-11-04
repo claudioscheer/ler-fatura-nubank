@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -8,10 +9,11 @@ import (
 )
 
 func main() {
-	fatura, err := fatura_nubank.ReadFatura("example/demo.pdf")
+	fatura, err := fatura_nubank.ReadFatura("example/demo-1.pdf")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Fatura: %v\n", fatura)
+  value, _ := json.MarshalIndent(fatura, "", "  ")
+	fmt.Printf("Fatura: %v\n", string(value))
 }
